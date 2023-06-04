@@ -7,6 +7,10 @@ for arg in $(cat /proc/cmdline); do
         fuzzer-rs --host_fuzzer
     elif [ "$arg" = "fuzz_no_reverts" ]; then
         fuzzer-rs -n
+    elif [ "$arg" = "tcgen" ]; then
+        fuzzer-rs -g
+    elif [ "$arg" = "exit" ]; then
+        fuzzer-rs -e
     else
         OPT=$(echo "$arg" | cut -d '=' -f 1);
         if [ "$OPT" = "testcase" ]; then
